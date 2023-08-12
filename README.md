@@ -1,5 +1,11 @@
 # counter_visitor
 
+link to this project in wokwi "https://wokwi.com/projects/372862573787554817"
+
+link to this project in tinkercad  "https://www.tinkercad.com/things/cY48wTwWRQx-pircountervisitor"
+
+
+
 Code Review and MySQL Integration Report:
 
 The provided code is intended to count visitors using two PIR sensors and send the visitor count to a MySQL database via an HTTP POST request. Here's a detailed review of the code and suggestions for integrating it with MySQL using ESP32:
@@ -107,8 +113,7 @@ void loop() {
     sendVisitorCount(visitors);  // Send visitor count to PHP script
     
   }
-  Serial.println("--------------------------------------------------");
-  delay(5000);
+  
 }
 
 void sendVisitorCount(int count) {
@@ -120,7 +125,7 @@ void sendVisitorCount(int count) {
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   int httpCode = http.POST(postData);
   // Check the response
-  if (httpResponseCode > 0) {
+  if (httpCode > 0) {
     Serial.print("HTTP Response code: ");
     Serial.println(httpCode);
     String response = http.getString();
